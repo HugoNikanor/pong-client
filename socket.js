@@ -38,6 +38,10 @@ function submitForm( form ) {
 
 var ws = new WebSocket("ws:/hugoweb.ga:8080/test");
 
+ws.onopen = function( event ) {
+	document.getElementById("chat-area").innerHTML += 'Connected to server<br>';
+}
+
 ws.onmessage = function (evt) {
 	document.getElementById("chat-area").innerHTML += evt.data + '<br>';
 }
