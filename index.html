@@ -3,17 +3,21 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="lay.css">
-	<title>sample</title>
+	<title>Coolest Chat</title>
 </head>
 <body>
 	<script src="./socket.js"></script>
 
-	<div id="chat-area"></div>
+	<div id="chat-area">
+		<noscript>
+			Please enable Javascript for the chat to work
+		</noscript>
+	</div>
 
 	<form id="msgForm" action="javascript:submitForm( this )">
 		Message:<br>
 		<input type="text" id="message" value="">
-		<input type="submit" value="click">
+		<input type="submit" value="Send">
 	</form>
 
 </body>

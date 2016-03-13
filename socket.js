@@ -36,7 +36,7 @@ function submitForm( form ) {
 	sendMessage( formData );
 };
 
-var ws = new WebSocket("ws:/localhost:8080/test");
+var ws = new WebSocket("ws:/hugoweb.ga:8080/test");
 
 ws.onmessage = function (evt) {
 	document.getElementById("chat-area").innerHTML += evt.data + '<br>';
