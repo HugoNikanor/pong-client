@@ -45,3 +45,5 @@ ws.onopen = function( event ) {
 ws.onmessage = function (evt) {
 	document.getElementById("chat-area").innerHTML += evt.data + '<br>';
 }
+
+

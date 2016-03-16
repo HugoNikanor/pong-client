@@ -3,25 +3,21 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="lay.css">
-	<title>Coolest Chat</title>
+	<title>Cube Move</title>
 </head>
 <body>
-	<script src="./socket.js"></script>
+	<script src="./canvas.js"></script>
 
-	<div id="chat-area">
-		<script>
-			document.getElementById("chat-area").innerHTML += "Trying to connect to the server...<br>";
-		</script>
-		<noscript>
-			Please enable Javascript for the chat to work
-		</noscript>
-	</div>
+	<h1>Canvas below:</h1>
 
-	<form id="msgForm" action="javascript:submitForm( this )">
-		Message:<br>
-		<input type="text" id="message" value="">
-		<input type="submit" value="Send">
-	</form>
+
+	<canvas id="myCanvas" width="150" height="150">
+		<p>Please switch to a brower with canvas support</p>
+	</canvas>
+
+	<hr>
+
+	<span id="js-out"></span>
 
 </body>
 </html>
