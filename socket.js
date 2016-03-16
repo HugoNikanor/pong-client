@@ -1,8 +1,3 @@
-//var Socket = new WebSocket( 127.0.0.1 );
-//Socket.send( "Hello, World" );
-
-
-
 function sendMessage(msg){
     // Wait until the state of the socket is not ready and send the message when it is...
     waitForSocketConnection(ws, function(){
@@ -30,20 +25,19 @@ function waitForSocketConnection(socket, callback){
         }, 5); // wait 5 milisecond for the connection...
 }
 
-function submitForm( form ) {
-	var formData  = form.message.value;
-	form.message.value = "";
-	sendMessage( formData );
-};
 
-var ws = new WebSocket("ws:/hugoweb.ga:8080/test");
+var ws = new WebSocket("ws:/hugoweb.ga:8080/rectangle");
 
 ws.onopen = function( event ) {
-	document.getElementById("chat-area").innerHTML += 'Connected to server<br>';
+	console.log("connected");
 }
 
-ws.onmessage = function (evt) {
-	document.getElementById("chat-area").innerHTML += evt.data + '<br>';
+ws.onmessage = function( event ) {
+	var msg = JSON.parse(event.data);
+	rects[1].x = event.x;
+	rects[1].y = event.y;
+	rects[1].redraw();
 }
 
-
+window.onload = function() {
+}
