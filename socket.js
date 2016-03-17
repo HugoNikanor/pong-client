@@ -1,3 +1,4 @@
+console.log("socket.js");
 function sendMessage(msg){
     // Wait until the state of the socket is not ready and send the message when it is...
     waitForSocketConnection(ws, function(){
@@ -32,12 +33,33 @@ ws.onopen = function( event ) {
 	console.log("connected");
 }
 
+var ownId;
+
 ws.onmessage = function( event ) {
 	var msg = JSON.parse(event.data);
-	rects[1].x = event.x;
-	rects[1].y = event.y;
-	rects[1].redraw();
-}
+	console.log( msg );
+	switch( msg.type ) {
+		case "own-identifier":
+			ownId = msg.data;
+			console.log("ownId="+ownId);
+			break;
+		case "paddle-create":
+			rects[msg.data.id] = new Paddle(msg.data);
 
-window.onload = function() {
+			console.log( rects );
+
+			drawRectangle( msg.data	);
+
+			break;
+
+		case "paddle-move":
+			rect = rects[msg.data.id];
+			removeRectangle( rect );
+
+			rect.x = msg.data.x;
+			rect.y = msg.data.y;
+
+			drawRectangle( rect );
+			break;
+	}
 }
