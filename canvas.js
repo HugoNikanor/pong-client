@@ -13,6 +13,14 @@ function removeRectangle( rectangle ) {
 	canvas.clearRect( rectangle.x, rectangle.y, rectangle.width, rectangle.height );
 }
 
+function drawAll( rectangles ) {
+	//canvas.clearRect(0, 0, canvas.width, canvas.height);
+	//canvas.clearRect(0, 0, 100, 100);
+	for( var rId in rectangles ) {
+		drawRectangle( rectangles[rId] );
+	}
+}
+
 
 document.addEventListener("keypress", function registerKeypress( e ) {
 	console.log( e.keyCode );

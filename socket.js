@@ -43,12 +43,18 @@ ws.onmessage = function( event ) {
 			ownId = msg.data;
 			console.log("ownId="+ownId);
 			break;
+		case "client-disconnect":
+			removeRectangle( rects[msg.data] );
+			delete rects[msg.data];
+			drawAll( rects );
+			break;
 		case "paddle-create":
 			rects[msg.data.id] = new Paddle(msg.data);
 
 			console.log( rects );
 
-			drawRectangle( msg.data	);
+			//drawRectangle( msg.data );
+			drawAll( rects );
 
 			break;
 
@@ -59,7 +65,11 @@ ws.onmessage = function( event ) {
 			rect.x = msg.data.x;
 			rect.y = msg.data.y;
 
-			drawRectangle( rect );
+			rects[msg.data.id] = rect;
+
+			//drawRectangle( rect );
+			//drawRectangle( rect );
+			drawAll( rects );
 			break;
 	}
 }
